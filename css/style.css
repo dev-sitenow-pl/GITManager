@@ -1,0 +1,352 @@
+:root {
+  --color-primary-text: #EAEAEA;
+  --color-secondary-text: #FFFFFF;
+  --color-header-text: #FFFFFF;
+  --color-button-background: #007BFF;
+  /* --color-button-background-active: #0056b3; */
+  --color-button-background-active: #28a745;
+  --color-button-text: #FFFFFF;
+  --color-border-category: #E1E4E8;
+  --color-border-article: #3A3F44;
+  --color-background-dark: #2C2F33;
+  --color-background-code: #434A54;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-background-dark);
+  font-family: 'Roboto Mono', monospace;
+  color: var(--color-primary-text);
+  line-height: 1.6rem;
+  margin: 0;
+  overflow: hidden;
+  font-size: .8rem;
+}
+
+.body-box {
+  max-width: calc(1000px - 1rem);
+  padding: 0 .5rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 775px) {
+  .body-box {
+    max-width: calc(1000px - 2rem);
+    padding: 0 1rem;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+h3 {
+  font-size: .9rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--color-button-background);
+  color: var(--color-button-text);
+  border: none;
+  padding: 0.625em 1.25em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, letter-spacing 0.3s ease, background-color .3s ease;
+}
+
+button:hover,
+button.press {
+  transform: scale(.9);
+}
+
+button.press {
+  transform: scale(.95);
+  background-color: var(--color-button-background-active);
+}
+
+/* gitm elements */
+
+.gitm__category {
+
+  border: 1px solid var(--color-border-category);
+}
+
+.gitm__category+.gitm__category,
+footer {
+  margin-top: 4rem;
+}
+
+.gitm__category-title {
+  padding: 1rem;
+  margin: 0;
+  color: var(--color-background-dark);
+  background-color: var(--color-border-category);
+}
+
+.gitm__row {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  transition: background-color .7s;
+}
+
+@media (min-width: 775px) {
+  .gitm__row {
+    grid-template-columns: 1fr 100px;
+  }
+}
+
+.gitm__row+.gitm__row {
+  border-top: 1px solid var(--color-border-article);
+}
+
+.gitm__row:hover {
+  background-color: var(--color-border-article);
+}
+
+@media (min-width: 775px) {
+  .gitm__desc {
+    padding-right: 1rem;
+  }
+}
+
+/* 
+.gitm__desc__code {
+  transform: scale(0);
+  height: 0;
+  transition: transform .5s, height .2s;
+}
+
+.gitm__row:hover .gitm__desc__code {
+  transform: scale(1);
+  height: 100%
+} */
+
+
+.gitm__desc__code code {
+  background-color: var(--color-background-code);
+  padding: 0.4rem 0.8rem;
+  margin-top: .5rem;
+  display: inline-block;
+
+  overflow: auto;
+}
+
+@media (min-width: 768px) {
+  .gitm__desc__code code {
+    white-space: nowrap;
+  }
+}
+
+.gitm__btn {
+  margin-top: 1rem;
+}
+
+@media (min-width: 775px) {
+  .gitm__btn {
+    margin-top: 0;
+  }
+}
+
+#start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 0;
+  min-height: 110px;
+  background-color: var(--color-background-dark);
+  transition: height 1s, padding 1s;
+}
+
+/* preload */
+
+body.ready {
+  overflow: auto;
+}
+
+#start.ready {
+  height: 0;
+  padding: 5rem 0;
+}
+
+.lds-facebook {
+  margin: 150px auto 0;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  transition: opacity .8s, margin-top .8s;
+}
+
+#start.ready .lds-facebook {
+  opacity: 0;
+  margin-top: 0;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+footer {
+  border-top: 1px solid var(--color-border-category);
+}
+
+.footer-content {
+  display: grid;
+  align-items: center;
+  justify-items: end;
+  grid-template-columns: 1fr 120px;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr 270px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-content {
+    grid-template-columns: 1fr 350px;
+  }
+}
+
+.footer-content__text {}
+
+.footer-content__logo a {
+  font-family: 'Montserrat', sans-serif;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .footer-content__logo a {
+    width: 270px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-content__logo a {
+    width: 350px;
+    grid-template-columns: 165px 1fr;
+  }
+}
+
+.footer-content__logo svg {
+  max-width: 165px;
+  max-height: 165px;
+}
+
+@media (max-width: 1199px) {
+  .footer-content__logo svg {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
+.footer-content__logo:hover .footer-content__logo__text__color {
+  color: #EAB934;
+}
+
+.footer-content__logo__text {
+
+  font-weight: 700;
+  margin-left: -0.62em;
+}
+
+@media (max-width: 767px) {
+  .footer-content__logo__text {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-content__logo__text {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-content__logo__text {
+    font-size: 2.67em;
+  }
+}
+
+.footer-content__logo__text__color {
+  transition: color .4s;
+}
